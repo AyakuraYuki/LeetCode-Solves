@@ -1,5 +1,9 @@
 package cc.ayakurayuki.leetcode.problems.p37sudokusolves;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * [37] <a href="https://leetcode.com/problems/sudoku-solver/description/">Sudoku Solver</a>
  *
@@ -94,20 +98,33 @@ public class Solution {
   // region visualize
 
   public static void visualize(char[][] board) {
-    for (var col = 0; col < board[0].length; col++) {
-      if (col % 3 == 0) {
+    for (var row = 0; row < board.length; row++) {
+      if (row % 3 == 0) {
         System.out.println("+-------|-------|-------+");
       }
-      for (var row = 0; row < board.length; row++) {
-        if (row % 3 == 0) {
-          System.out.print("| ");
-        }
-        System.out.print(board[row][col]);
-        System.out.print(" ");
-      }
-      System.out.println("|");
+      List<List<String>> rowChars = sliceChars(board[row], 3);
+      System.out.printf("| %s | %s | %s |%n", String.join(" ", rowChars.get(0)), String.join(" ", rowChars.get(1)), String.join(" ", rowChars.get(2)));
     }
     System.out.println("+-------|-------|-------+");
+  }
+
+  public static List<List<String>> sliceChars(char[] chars, int lengthOfGroup) {
+    if (chars == null || chars.length == 0) {
+      return Collections.emptyList();
+    }
+    List<String> charsStringList = new ArrayList<>();
+    for (char ch : chars) {
+      charsStringList.add(String.valueOf(ch));
+    }
+    List<List<String>> result = new ArrayList<>();
+    for (int low = 0, high; low < charsStringList.size(); low = high) {
+      high = low + lengthOfGroup;
+      if (high > charsStringList.size()) {
+        high = charsStringList.size();
+      }
+      result.add(new ArrayList<>(charsStringList.subList(low, high)));
+    }
+    return result;
   }
 
   // endregion
