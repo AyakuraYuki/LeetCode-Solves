@@ -55,7 +55,7 @@ import java.util.List;
  */
 public class Solution {
 
-  // region solve
+  // region solve (submit parts)
 
   public void solveSudoku(char[][] board) {
     dfs(board, 0, 0);
@@ -95,7 +95,7 @@ public class Solution {
 
   // endregion
 
-  // region visualize
+  // region visualize (for debugging)
 
   public static void visualize(char[][] board) {
     for (var row = 0; row < board.length; row++) {
@@ -129,20 +129,40 @@ public class Solution {
 
   // endregion
 
+  // region self testing
+
+  public static char[][] convertToBoard(int[][] numPad) {
+    var board = new char[9][9];
+    for (var i = 0; i < 9; i++) {
+      for (var j = 0; j < 9; j++) {
+        var num = numPad[i][j];
+        if (num == 0) {
+          board[i][j] = '.';
+          continue;
+        }
+        board[i][j] = Integer.toString(num).toCharArray()[0];
+      }
+    }
+    return board;
+  }
+
   public static void main(String[] args) {
-    var board = new char[][]{
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-        {'.', '.', '.', '.', '.', '.', '.', '.', '.'}
+    var numPad = new int[][]{
+        {0, 8, 0, 0, 0, 5, 0, 7, 0},
+        {0, 0, 0, 0, 7, 0, 2, 1, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0, 9},
+        {8, 5, 0, 3, 0, 4, 0, 0, 7},
+        {0, 0, 7, 0, 1, 0, 4, 3, 0},
+        {3, 0, 0, 9, 0, 0, 0, 2, 5},
+        {0, 0, 0, 0, 0, 3, 0, 0, 0},
+        {0, 2, 0, 4, 5, 0, 0, 0, 0},
+        {0, 4, 0, 7, 0, 0, 0, 0, 0}
     };
+    var board = convertToBoard(numPad);
     new Solution().solveSudoku(board);
     visualize(board);
   }
+
+  // endregion
 
 }
