@@ -32,24 +32,21 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	start, end, maxLength := 0, 0, 0
 	uniqueCharacters := make(map[string]struct{})
+	uniqueCharactersLen := 0
 	for end < len(s) {
 		if _, ok := uniqueCharacters[s[end:end+1]]; !ok {
 			uniqueCharacters[s[end:end+1]] = struct{}{}
 			end++
-			maxLength = max(maxLength, len(uniqueCharacters))
+			uniqueCharactersLen = len(uniqueCharacters)
+			if maxLength < uniqueCharactersLen {
+				maxLength = uniqueCharactersLen
+			}
 		} else {
 			delete(uniqueCharacters, s[start:start+1])
 			start++
 		}
 	}
 	return maxLength
-}
-
-func max(a, b int) int {
-	if a < b {
-		return b
-	}
-	return a
 }
 
 // endregion
