@@ -31,6 +31,7 @@ import (
 )
 
 // isAnagramSortSolution sorts both `s` and `t`, and compare strings to get result
+// A universal solution but slowest because of String sorts.
 func isAnagramSortSolution(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
@@ -46,6 +47,7 @@ func isAnagramSortSolution(s string, t string) bool {
 }
 
 // isAnagramHashTableSolution uses hash table to count letters, compare counts to get result
+// A universal solution. It is not the slowest solution, but the performance depends on the hash table implementation.
 func isAnagramHashTableSolution(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
@@ -64,7 +66,8 @@ func isAnagramHashTableSolution(s string, t string) bool {
 	return true
 }
 
-// isAnagramCounterSolution uses rule "`s` and `t` consist of lowercase English letters.", not suitable to other cases.
+// isAnagramCounterSolution uses rule "`s` and `t` consist of lowercase English letters.".
+// The fastest solution, but only supports lowercase English letters.
 func isAnagramCounterSolution(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
