@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.23)
+project(p3_longest_substring_without_repeating_characters)
+set(CMAKE_CXX_STANDARD 23)
+add_executable(p3_longest_substring_without_repeating_characters main.cpp)
