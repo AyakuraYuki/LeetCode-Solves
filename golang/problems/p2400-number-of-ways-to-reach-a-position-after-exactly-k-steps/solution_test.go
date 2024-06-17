@@ -21,9 +21,8 @@ func Test_numberOfWays(t *testing.T) {
 	}
 }
 
-func Example_numberOfWaysBeforeOptimize() {
-	fmt.Println(numberOfWaysBeforeOptimize(1, 2, 3))
+func Example_numberOfWaysOptimize() {
+	fmt.Println(numberOfWaysOptimize(1, 2, 3))
 	// Output:
-	// [[1 0 0 0] [1 1 0 0] [1 2 1 0] [1 3 3 1]]
 	// 3
 }

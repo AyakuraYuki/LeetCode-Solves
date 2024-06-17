@@ -1,4 +1,4 @@
-package main
+package p35_search_insert_position
 
 import "testing"
 

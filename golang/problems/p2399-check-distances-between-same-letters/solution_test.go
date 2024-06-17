@@ -1,4 +1,4 @@
-package main
+package p2399_check_distances_between_same_letters
 
 import "testing"
 
