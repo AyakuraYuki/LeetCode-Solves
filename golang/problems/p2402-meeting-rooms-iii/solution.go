@@ -65,10 +65,10 @@ import (
 )
 
 func mostBooked(n int, meetings [][]int) (ans int) {
-	count := make([]int, n)           // 统计使用次数，索引号即会议室编号
-	idle := idleRooms{make([]int, n)} // 一开始设所有会议室可用
+	count := make([]int, n)  // 统计使用次数，索引号即会议室编号
+	idle := make(intHeap, n) // 一开始设所有会议室可用
 	for i := 0; i < n; i++ {
-		idle.IntSlice[i] = i
+		idle[i] = i
 	}
 	using := busyRooms{}                                                                 // 已用的会议室
 	sort.Slice(meetings, func(i, j int) bool { return meetings[i][0] < meetings[j][0] }) // 按照会议开始时间对会议安排进行排序
@@ -98,13 +98,16 @@ func mostBooked(n int, meetings [][]int) (ans int) {
 	return
 }
 
-type idleRooms struct{ sort.IntSlice }
+type intHeap []int
 
-func (h *idleRooms) Push(v any) { h.IntSlice = append(h.IntSlice, v.(int)) }
-func (h *idleRooms) Pop() any {
-	a := h.IntSlice
-	v := a[len(a)-1]
-	h.IntSlice = a[:len(a)-1]
+func (h intHeap) Len() int           { return len(h) }
+func (h intHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h intHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *intHeap) Push(v any)        { *h = append(*h, v.(int)) }
+func (h *intHeap) Pop() any {
+	old := *h
+	v := old[len(old)-1]
+	*h = old[:len(old)-1]
 	return v
 }
 
@@ -113,8 +116,7 @@ type busyRooms []pair
 
 func (h busyRooms) Len() int { return len(h) }
 func (h busyRooms) Less(i, j int) bool {
-	a, b := h[i], h[j]
-	return a.end < b.end || a.end == b.end && a.roomNo < b.roomNo
+	return h[i].end < h[j].end || h[i].end == h[j].end && h[i].roomNo < h[j].roomNo
 }
 func (h busyRooms) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
 func (h *busyRooms) Push(v any)   { *h = append(*h, v.(pair)) }
