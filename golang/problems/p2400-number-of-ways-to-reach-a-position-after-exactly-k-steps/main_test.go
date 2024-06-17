@@ -11,6 +11,7 @@ func Test_numberOfWays(t *testing.T) {
 	}{
 		{1, 2, 3, 3},
 		{2, 5, 10, 0},
+		{2, 5, 9, 84},
 	}
 	for _, v := range cases {
 		get := numberOfWays(v.startPos, v.endPos, v.k)

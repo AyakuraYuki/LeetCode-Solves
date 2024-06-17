@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // 称 startPos -> endPos 是正方向，startPos <- endPos 是负方向，
 // 有正方向走 a 步，负方向走 (k - a) 步，可以从 startPos 走到 endPos，
 // 则有组合数 C(k,a)，即 k 步里选 a 步走正方向。
@@ -28,7 +26,6 @@ func numberOfWays(startPos int, endPos int, k int) int {
 			dp[j] = (dp[j] + dp[j-1]) % 1000000007
 		}
 	}
-	fmt.Println(dp)
 	return dp[(distance+k)/2]
 }
 
@@ -60,6 +57,5 @@ func numberOfWaysBeforeOptimize(startPos int, endPos int, k int) int {
 			dp[i][j] = (dp[i-1][j] + dp[i-1][j-1]) % 1000000007
 		}
 	}
-	fmt.Println(dp)
 	return dp[k][(distance+k)/2]
 }

@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.28)
+project(p2400_number_of_ways_to_reach_a_position_after_exactly_k_steps)
+set(CMAKE_CXX_STANDARD 26)
+add_executable(p2400_number_of_ways_to_reach_a_position_after_exactly_k_steps main.cpp)
