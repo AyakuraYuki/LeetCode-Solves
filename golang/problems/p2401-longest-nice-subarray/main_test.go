@@ -9,7 +9,7 @@ var cases = []struct {
 	want int
 }{
 	{[]int{1, 3, 8, 48, 10}, 3},
-	//{[]int{3, 1, 5, 11, 13}, 1},
+	{[]int{3, 1, 5, 11, 13}, 1},
 }
 
 func Test_longestNiceSubarray(t *testing.T) {

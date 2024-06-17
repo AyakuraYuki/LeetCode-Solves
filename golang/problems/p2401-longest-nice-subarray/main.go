@@ -34,9 +34,11 @@ func longestNiceSubarray(nums []int) int {
 	if n <= 1 {
 		return n
 	}
-	ans := 0  // 最长子数组长度
-	mask := 0 // 上一次检查的结果
-	left := 0 // 左边界
+	var (
+		ans  int // 最长子数组长度
+		mask int // 上一次检查的结果
+		left int // 左边界
+	)
 	for right, v := range nums {
 		for mask&v > 0 {
 			// 右边界值与前面的子数组中存在交集
@@ -55,7 +57,7 @@ func longestNiceSubarrayExhaustive(nums []int) int {
 	if n <= 1 {
 		return n
 	}
-	ans := 0
+	var ans int
 	for right, v := range nums {
 		left := right - 1
 		for ; left >= 0 && nums[left]&v == 0; left-- {
