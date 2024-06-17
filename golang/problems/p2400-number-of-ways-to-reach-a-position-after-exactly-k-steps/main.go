@@ -11,14 +11,6 @@ import "fmt"
 // 所以需要 distance + k 得到偶数，并且 distance <= k，否则走不到 endPos。
 //
 // 则有 C(i,j) = C(i-1,j) + C(i-1,j-1) 递推式可以求出组合数，组合数中 a 的位置就是最终方案数。
-
-// 给你两个 正 整数 startPos 和 endPos 。最初，你站在 无限 数轴上位置 startPos 处。在一步移动中，你可以向左或者向右移动一个位置。
-//
-// 给你一个正整数 k ，返回从 startPos 出发、恰好 移动 k 步并到达 endPos 的 不同 方法数目。由于答案可能会很大，返回对 109 + 7 取余 的结果。
-//
-// 如果所执行移动的顺序不完全相同，则认为两种方法不同。
-//
-// 注意：数轴包含负整数。
 func numberOfWays(startPos int, endPos int, k int) int {
 	distance := startPos - endPos // 步数差
 	if distance < 0 {
@@ -40,8 +32,6 @@ func numberOfWays(startPos int, endPos int, k int) int {
 	return dp[(distance+k)/2]
 }
 
-// 没有优化前，使用二位数组动态规划的流程
-//
 // 给你两个 正 整数 startPos 和 endPos 。最初，你站在 无限 数轴上位置 startPos 处。在一步移动中，你可以向左或者向右移动一个位置。
 //
 // 给你一个正整数 k ，返回从 startPos 出发、恰好 移动 k 步并到达 endPos 的 不同 方法数目。由于答案可能会很大，返回对 109 + 7 取余 的结果。
@@ -64,8 +54,9 @@ func numberOfWaysBeforeOptimize(startPos int, endPos int, k int) int {
 	}
 	// 求组合数
 	for i := 0; i <= k; i++ {
-		dp[i][0] = 1
+		dp[i][0] = 1 // 任意 i 步数在走 0 步的场合都代表停在原地，所以固定是 1 种走法
 		for j := 1; j <= i; j++ {
+			// dp[i][j] 表示在第 i 步走 j 步向 endPos 方向的不同方式的数量
 			dp[i][j] = (dp[i-1][j] + dp[i-1][j-1]) % 1000000007
 		}
 	}
