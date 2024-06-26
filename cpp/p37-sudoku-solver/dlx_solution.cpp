@@ -6,7 +6,13 @@
 
 using namespace std;
 
-const int N = 9 * 9 * 9 * 4;
+// N 代表精准覆盖问题在数独场景下的所有约束条件相应的解决方案数
+// 9*9 方格数独的规则是：
+// 1. 每个格子只能填一个数字
+// 2. 每行每个数字只能填一遍
+// 3. 每列每个数字只能填一遍
+// 4. 每宫每个数字只能填一遍，一个宫是一个 3*3 的小矩阵
+constexpr int N = 9 * 9 * 9 * 4;
 
 class node {
 public:
@@ -31,8 +37,11 @@ public:
         B = a;
     }
 
+private:
     void dance() {
+        // 初始化节点
         init();
+        // 初始化解决方案
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
                 for (int k = 1; k <= 9; ++k) {
@@ -45,6 +54,7 @@ public:
                 }
             }
         }
+        // 开始解决问题
         Dance(0);
     }
 
