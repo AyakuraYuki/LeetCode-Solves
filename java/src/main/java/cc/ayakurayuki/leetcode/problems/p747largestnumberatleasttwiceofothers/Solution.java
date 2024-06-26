@@ -9,23 +9,17 @@ package cc.ayakurayuki.leetcode.problems.p747largestnumberatleasttwiceofothers;
 public class Solution {
 
   public int dominantIndex(int[] nums) {
-    int res = 0, largest = nums[0];
-    for (int i = 1; i < nums.length; i++) {
-      if (nums[i] > largest) {
-        if (nums[i] >= largest * 2) {
-          res = i;
-        } else {
-          res = -1;
-        }
-        largest = nums[i];
-      } else {
-        if (largest < nums[i] * 2) {
-          res = -1;
-        }
+    int m1 = -1, m2 = -1, index = -1;
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] > m1) {
+        m2 = m1;
+        m1 = nums[i];
+        index = i;
+      } else if (nums[i] > m2) {
+        m2 = nums[i];
       }
     }
-
-    return res;
+    return m1 >= m2 * 2 ? index : -1;
   }
 
 }
