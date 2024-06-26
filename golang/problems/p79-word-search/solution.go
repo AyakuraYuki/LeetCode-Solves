@@ -8,15 +8,15 @@ https://leetcode.com/problems/word-search/description/
 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
 
 示例 1：
-	（图片：demo1.jpg）
+	（图片：puzzle-images/p79-word-search/demo1.jpg）
 	输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 	输出：true
 示例 2：
-	（图片：demo2.jpg）
+	（图片：puzzle-images/p79-word-search/demo2.jpg）
 	输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
 	输出：true
 示例 3：
-	（图片：demo3.jpg）
+	（图片：puzzle-images/p79-word-search/demo3.jpg）
 	输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
 	输出：false
 

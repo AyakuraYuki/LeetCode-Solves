@@ -21,12 +21,12 @@ https://leetcode.cn/problems/delete-node-in-a-linked-list/
   * 输出将是调用你函数后的整个链表。
 
 示例 1：
-	（图片：node1.jpg）
+	（图片：puzzle-images/p237-delete-node-in-a-linked-list/node1.jpg）
 	输入：head = [4,5,1,9], node = 5
 	输出：[4,1,9]
 	解释：指定链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -> 1 -> 9
 示例 2：
-	（图片：node2.jpg）
+	（图片：puzzle-images/p237-delete-node-in-a-linked-list/node2.jpg）
 	输入：head = [4,5,1,9], node = 1
 	输出：[4,5,9]
 	解释：指定链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9

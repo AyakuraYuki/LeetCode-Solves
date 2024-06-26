@@ -12,7 +12,7 @@ https://leetcode.cn/problems/sudoku-solver/
 数独部分空格内已填入了数字，空白格用 '.' 表示。
 
 示例 1：
-	（输入输出分别见图片 input.png 和 output.png）
+	（输入输出分别见图片 puzzle-images/p37-sudoku-solves/input.png 和 puzzle-images/p37-sudoku-solves/output.png）
 	输入：board = [
 		["5","3",".",".","7",".",".",".","."],
 		["6",".",".","1","9","5",".",".","."],

@@ -6,11 +6,11 @@ https://leetcode.cn/problems/sort-list/
 给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。
 
 示例 1：
-	（图片：sort_list_1.jpg）
+	（图片：puzzle-images/p148-sort-list/sort_list_1.jpg）
 	输入：head = [4,2,1,3]
 	输出：[1,2,3,4]
 示例 2：
-	（图片：sort_list_2.jpg）
+	（图片：puzzle-images/p148-sort-list/sort_list_2.jpg）
 	输入：head = [-1,5,3,4,0]
 	输出：[-1,0,3,4,5]
 示例 3：
