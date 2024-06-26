@@ -35,7 +35,7 @@ public:
         const int m = mat.size();
         const int n = mat[0].size();
         vector<int> res;
-        // 一个矩阵可以得到的总的对角线条数是这个矩阵的长宽只和再 -1
+        // 一个矩阵可以得到的总的对角线条数是这个矩阵的长宽之和再 -1
         for (int i = 0; i < m + n - 1; ++i) {
             if (i % 2 == 0) {
                 // 向右上的方向
