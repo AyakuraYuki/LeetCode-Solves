@@ -41,37 +41,33 @@ https://leetcode.cn/problems/validate-ip-address/
   * queryIP 仅由英文字母，数字，字符 '.' 和 ':' 组成。
  */
 
-#include <iostream>
 #include <string>
-#include <valarray>
-#include <vector>
-
 using namespace std;
 
 class Solution {
 public:
-    string validIPAddress(string query_ip) {
-        if (query_ip.contains('.')) {
+    string validIPAddress(const string &query_ip) {
+        if (query_ip.find('.') != string::npos) {
             return is_ipv4(query_ip.c_str(), query_ip.size()) ? "IPv4" : "Neither";
-        } else if (query_ip.contains(':')) {
-            return is_ipv6(query_ip.c_str(), query_ip.size()) ? "IPv6" : "Neither";
-        } else {
-            return "Neither";
         }
+        if (query_ip.find(':') != string::npos) {
+            return is_ipv6(query_ip.c_str(), query_ip.size()) ? "IPv6" : "Neither";
+        }
+        return "Neither";
     }
 
 private:
-    bool is_ipv4(const char *ip, size_t string_len) {
+    static bool is_ipv4(const char *ip, const size_t string_len) {
         int index = 0, segment = 0;
         while (index < string_len) {
             int val = 0, digit = 0;
             while (index < string_len) {
-                char ch = ip[index++];
-                int c = ch - '0';
-                if (c >= 0 && c <= 9) {
+                const char *ch = &ip[index++];
+                if (const int c = *ch - '0'; c >= 0 && c <= 9) {
                     val = val * 10 + c;
-                    digit++;
-                } else if (ch == '.') {
+                    ++digit;
+                    if (digit > 3) return false;
+                } else if (*ch == '.') {
                     if (index == string_len) return false;
                     break;
                 } else return false;
@@ -84,7 +80,23 @@ private:
         return false;
     }
 
-    bool is_ipv6(const char *ip, size_t string_len) {
+    static bool is_ipv6(const char *ip, const size_t string_len) {
         int index = 0, segment = 0;
+        while (index < string_len) {
+            int digit = 0;
+            while (index < string_len) {
+                const char *ch = &ip[index++];
+                if ((*ch >= '0' && *ch <= '9') || (*ch >= 'A' && *ch <= 'F') || (*ch >= 'a' && *ch <= 'f')) {
+                    ++digit;
+                } else if (*ch == ':') {
+                    if (index == string_len) return false;
+                    break;
+                } else return false;
+            }
+            ++segment;
+            if (digit == 0 || digit > 4) return false;
+            if (index == string_len)return segment == 8;
+        }
+        return false;
     }
 };
