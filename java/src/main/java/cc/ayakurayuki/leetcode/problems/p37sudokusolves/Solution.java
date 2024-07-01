@@ -5,51 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * [37] <a href="https://leetcode.com/problems/sudoku-solver/description/">Sudoku Solver</a>
- *
- * <p>algorithms
- * <p>Hard (36.12%)
- * <p>Total Accepted:    122.5K
- * <p>Total Submissions: 339K
- * <p>Testcase Example:
- * <pre>
- * [
- *     ['5','3','.','.','7','.','.','.','.'],
- *     ['6','.','.','1','9','5','.','.','.'],
- *     ['.','9','8','.','.','.','.','6','.'],
- *     ['8','.','.','.','6','.','.','.','3'],
- *     ['4','.','.','8','.','3','.','.','1'],
- *     ['7','.','.','.','2','.','.','.','6'],
- *     ['.','6','.','.','.','.','2','8','.'],
- *     ['.','.','.','4','1','9','.','.','5'],
- *     ['.','.','.','.','8','.','.','7','9']
- * ]
- * </pre>
- *
- * <p>Write a program to solve a Sudoku puzzle by filling the empty cells.
- *
- * <p>A sudoku solution must satisfy all the following rules:
- *
- * <ol>
- *   <li>Each of the digits 1-9 must occur exactly once in each row.</li>
- *   <li>Each of the digits 1-9 must occur exactly once in each column.</li>
- *   <li>Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.</li>
- * </ol>
- *
- * <p>Empty cells are indicated by the character '.'.
- *
- *
- * <p>A sudoku puzzle...
- *
- * <p>...and its solution numbers marked in red.
- *
- * <p>Note:
- *
- * <p>The given board contain only digits 1-9 and the character '.'.
- * <p>You may assume that the given Sudoku puzzle will have a single unique
- * <p>solution.
- * <p>The given board size is always 9x9.
- *
  * @author Ayakura Yuki
  * @date 2022/11/22-17:13
  */
