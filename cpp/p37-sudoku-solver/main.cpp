@@ -51,7 +51,6 @@ https://leetcode.cn/problems/sudoku-solver/
  */
 
 #include <vector>
-
 using namespace std;
 
 class Solution {

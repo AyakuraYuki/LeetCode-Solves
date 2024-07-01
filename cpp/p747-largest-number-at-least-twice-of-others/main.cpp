@@ -31,7 +31,6 @@ hint 1: Scan through the array to find the unique largest element `m`,
  */
 
 #include <vector>
-
 using namespace std;
 
 class Solution {

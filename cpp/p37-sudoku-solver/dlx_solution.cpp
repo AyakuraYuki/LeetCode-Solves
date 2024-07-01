@@ -3,7 +3,6 @@
  */
 
 #include <vector>
-
 using namespace std;
 
 // N 代表精准覆盖问题在数独场景下的所有约束条件相应的解决方案数
