@@ -65,25 +65,20 @@ using namespace std;
 
 class Solution {
 public:
-    static int romanToInt(string s) {
-        s = replace_all(s, "IV", "a");
-        s = replace_all(s, "IX", "b");
-        s = replace_all(s, "XL", "c");
-        s = replace_all(s, "XC", "d");
-        s = replace_all(s, "CD", "e");
-        s = replace_all(s, "CM", "f");
-
-        int sum = 0;
-        for (int i = 0; i < s.length(); ++i) {
-            sum += get_value(s[i]);
+    static int romanToInt(const string &s) {
+        int sum = 0, head = get_value(s[0]);
+        for (int i = 1; i < s.length(); ++i) {
+            const int num = get_value(s[i]);
+            if (head < num) { sum -= head; } else { sum += head; }
+            head = num;
         }
+        sum += head;
         return sum;
     }
 
 private:
-    static int get_value(char ch) {
+    static int get_value(const char ch) {
         switch (ch) {
-            // basic
             case 'I': return 1;
             case 'V': return 5;
             case 'X': return 10;
@@ -91,23 +86,7 @@ private:
             case 'C': return 100;
             case 'D': return 500;
             case 'M': return 1000;
-            // hack
-            case 'a': return 4;
-            case 'b': return 9;
-            case 'c': return 40;
-            case 'd': return 90;
-            case 'e': return 400;
-            case 'f': return 900;
             default: return 0;
         }
-    }
-
-    static string replace_all(string &str, string from, string to) {
-        size_t pos = str.find(from);
-        while (pos != string::npos) {
-            str.replace(pos, from.size(), to);
-            pos = str.find(from);
-        }
-        return str;
     }
 };
