@@ -49,22 +49,25 @@ struct ListNode {
 class Solution {
 public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        // carry 记录了上一位数相加的进位数值
         int carry = 0;
+        // 构造一个【假人】节点，用一个头节点指向 dummy 做填充逻辑
         ListNode *dummy = new ListNode(0), *head = dummy;
+        // 双遍历，直到两个链表都遍历结束
         while (l1 || l2) {
-            int sum = carry + (l1 ? l1->val : 0) + (l2 ? l2->val : 0);
-            carry = sum / 10;
-            sum %= 10;
-            head->next = new ListNode(sum);
-            head = head->next;
+            int sum = carry + (l1 ? l1->val : 0) + (l2 ? l2->val : 0); // 每进一位，计算这一位的两数之和
+            carry = sum / 10; // 计算这一位之和需要进位加多少
+            sum %= 10; // 拿到进位后这一位的个位数数值
+            head->next = new ListNode(sum); // 将个位数值填入 head
+            head = head->next; // head 进一位
             if (l1) {
-                l1 = l1->next;
+                l1 = l1->next; // 如果 l1 还有值，l1 进一位
             }
             if (l2) {
-                l2 = l2->next;
+                l2 = l2->next; // 如果 l2 还有值，l2 进一位
             }
         }
-        if (carry > 0) head->next = new ListNode(carry);
-        return dummy->next;
+        if (carry > 0) head->next = new ListNode(carry); // 如果进位还有余数，追加到 head 的末尾
+        return dummy->next; // dummy->next 记录了链表头，返回它而不要返回 dummy 本身，因为 dummy.val 是假人占位
     }
 };

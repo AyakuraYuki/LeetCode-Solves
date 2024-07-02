@@ -36,6 +36,8 @@ class Solution {
 public:
     void rotate(vector<vector<int> > &matrix) {
         const size_t n = matrix.size();
+        // 下面的循环，按照逆时针方向转动数值来完成矩阵旋转
+        // 图示见 explain_rotate.png
         for (int row = 0; row < n / 2; ++row) {
             for (int col = 0; col < (n + 1) / 2; ++col) {
                 const int temp = matrix[row][col];

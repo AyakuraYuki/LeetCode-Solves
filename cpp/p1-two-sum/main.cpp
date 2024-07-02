@@ -40,11 +40,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int> &nums, int target) {
+        // 开一个map存储数字和索引，key是数值，value是这个数值出现的索引号
         unordered_map<int, int> map;
+        // 遍历 nums 同时做计算
         for (int i = 0; i < nums.size(); ++i) {
             if (auto it = map.find(target - nums[i]); it != map.end()) {
+                // 找到另一个加数，返回另一个加数和当前这个数的索引
                 return {it->second, i};
             }
+            // 找不到合适的另一个加数，把当前这个数放到map里暂存
             map[nums[i]] = i;
         }
         return {};

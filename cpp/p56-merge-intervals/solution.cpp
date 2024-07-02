@@ -32,13 +32,17 @@ class Solution {
 public:
     vector<vector<int> > merge(vector<vector<int> > &intervals) {
         if (intervals.empty()) return {};
+        // 先以区间开头的数值为基准，对区间进行排序
         sort(intervals.begin(), intervals.end(), [](const vector<int> &a, const vector<int> &b) {
             return a[0] < b[0];
         });
         vector<vector<int> > merged;
         for (auto &interval: intervals) {
+            // 拿到本区间的左右闭合值
             int left = interval[0], right = interval[1];
+            // 插入第一组区间，或者当【末尾区间】的【右闭合】小于【本区间】的【左闭合】时追加本区间
             if (const size_t m = merged.size(); m == 0 || merged[m - 1][1] < left) merged.push_back({left, right});
+            // 否则，尝试合并本区间到末尾，因为末尾的区间可能【真包含】本区间
             else merged[m - 1][1] = max(merged[m - 1][1], right);
         }
         return merged;

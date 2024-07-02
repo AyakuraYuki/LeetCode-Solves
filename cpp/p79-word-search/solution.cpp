@@ -42,6 +42,7 @@ public:
     static bool exist(vector<vector<char> > &board, string word) {
         if (board.empty()) return false;
         const size_t m = board.size(), n = board[0].size();
+        // 扫描矩阵找到符合 word 的起点
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (search(board, m, n, word, 0, i, j)) return true;
@@ -53,15 +54,20 @@ public:
 private:
     static bool search(vector<vector<char> > &board, const size_t m, const size_t n,
                        string &word, const int cursor, const int i, const int j) {
+        // 在递归的过程中，游标达到了 word 长度，说明匹配到了 word
         if (cursor == word.size()) return true;
+        // 递归的过程中越界了，说明匹配失败
+        // 或者作为上一次游标的 上/下/左/右 时，与当前游标对应的 word 的字母不同，说明匹配中断
         if (i < 0 || j < 0 || i >= m || j >= n || board[i][j] != word[cursor]) return false;
+        // 标记当前字符已被检索
         const char b = board[i][j];
         board[i][j] = '#';
-        // 搜索 上/下/左/右
+        // 搜索 上/下/左/右，尝试找到合适的字母，任何一个分叉返回true就表示找到 word 了
         const bool res = search(board, m, n, word, cursor + 1, i - 1, j) ||
                          search(board, m, n, word, cursor + 1, i + 1, j) ||
                          search(board, m, n, word, cursor + 1, i, j - 1) ||
                          search(board, m, n, word, cursor + 1, i, j + 1);
+        // 还原当前字符
         board[i][j] = b;
         return res;
     }
