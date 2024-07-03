@@ -46,7 +46,7 @@ using namespace std;
 
 class Solution {
 public:
-    string validIPAddress(const string &query_ip) {
+    static string validIPAddress(const string &query_ip) {
         if (query_ip.find('.') != string::npos) {
             return is_ipv4(query_ip) ? "IPv4" : "Neither";
         }
@@ -109,11 +109,14 @@ private:
     }
 };
 
+// ----------------------------------------------------------------------------------------------------
+
+// 官解：按照 segment 数量来遍历，用滑动窗口 last 和 current 来扫描每个 segment
+static const string Neither = "Neither";
+
 class ScanSolution {
 public:
-    string Neither = "Neither";
-
-    string validIPAddress(const string &query_ip) {
+    static string validIPAddress(const string &query_ip) {
         if (query_ip.find('.') != string::npos) {
             // IPv4
             // 对于 IPv4 而言，它有 4 个部分，用 '.' 隔开。
@@ -142,30 +145,29 @@ public:
                 last = current;
             }
             return "IPv4";
-        } else {
-            // IPv6
-            //
-            // 对于 IPv6 而言，它有 8 个部分，用 ':' 隔开。
-            // 我们可以存储相邻两个 ':' 出现的位置作为 last 和 current，那么子串 query_ip[last+1..current-1] 就对应一个部分，
-            // 一个部分需要满足：
-            // 1. 长度是否在 [1, 4] 之间
-            // 2. 是否只包含合法的十六进制字符 [0-9a-fA-F]+
-            // 不满足这两个规则的，说明字符串不是有效的 IPv6 地址
-            size_t last = -1;
-            for (int i = 0; i < 8; ++i) {
-                const size_t current = i == 7 ? query_ip.size() : query_ip.find(':', last + 1);
-                if (current == string::npos) return Neither;
-                if (current - last - 1 < 1 || current - last - 1 > 4) return Neither;
-                for (size_t j = last + 1; j < current; ++j) {
-                    if (!isdigit(query_ip[j])
-                        && !('a' <= query_ip[j] && query_ip[j] <= 'f')
-                        && !('A' <= query_ip[j] && query_ip[j] <= 'F')) {
-                        return Neither;
-                    }
-                }
-                last = current;
-            }
-            return "IPv6";
         }
+
+        // IPv6
+        // 对于 IPv6 而言，它有 8 个部分，用 ':' 隔开。
+        // 我们可以存储相邻两个 ':' 出现的位置作为 last 和 current，那么子串 query_ip[last+1..current-1] 就对应一个部分，
+        // 一个部分需要满足：
+        // 1. 长度是否在 [1, 4] 之间
+        // 2. 是否只包含合法的十六进制字符 [0-9a-fA-F]+
+        // 不满足这两个规则的，说明字符串不是有效的 IPv6 地址
+        size_t last = -1;
+        for (int i = 0; i < 8; ++i) {
+            const size_t current = i == 7 ? query_ip.size() : query_ip.find(':', last + 1);
+            if (current == string::npos) return Neither;
+            if (current - last - 1 < 1 || current - last - 1 > 4) return Neither;
+            for (size_t j = last + 1; j < current; ++j) {
+                if (!isdigit(query_ip[j])
+                    && !('a' <= query_ip[j] && query_ip[j] <= 'f')
+                    && !('A' <= query_ip[j] && query_ip[j] <= 'F')) {
+                    return Neither;
+                }
+            }
+            last = current;
+        }
+        return "IPv6";
     }
 };
