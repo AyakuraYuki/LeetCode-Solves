@@ -70,9 +70,7 @@ using LL = long long;
 
 class Solution {
 public:
-    int mostBooked(int n, vector<vector<int> > &meetings) {
-        // int count[n];
-        // memset(count, 0, sizeof(count));
+    static int mostBooked(int n, vector<vector<int> > &meetings) {
         vector count(n, 0); // 统计使用次数，索引号即会议室编号
 
         priority_queue<int, vector<int>, greater<> > idle;
@@ -80,9 +78,10 @@ public:
 
         priority_queue<pair<LL, int>, vector<pair<LL, int> >, greater<> > using_; // 已用的会议室
 
+        // 按照会议开始时间对会议安排进行排序
         sort(meetings.begin(), meetings.end(), [](const vector<int> &a, const vector<int> &b) {
             return a[0] < b[0];
-        }); // 按照会议开始时间对会议安排进行排序
+        });
 
         for (const auto &meeting: meetings) {
             LL end = meeting[1];

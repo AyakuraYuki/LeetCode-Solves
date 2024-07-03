@@ -38,18 +38,17 @@ hint 2: Does the order of the steps matter?
 hint 3: Use combinatorics to find the number of ways to order the steps.
 */
 
-#include <iostream>
-#include <valarray>
 #include <vector>
+using namespace std;
 
 class Solution {
 public:
-    int numberOfWays(int startPos, int endPos, int k) {
-        const int distance = std::abs(startPos - endPos);
+    static int numberOfWays(const int startPos, const int endPos, const int k) {
+        const int distance = abs(startPos - endPos);
         if (distance > k || (distance + k) % 2 != 0) {
             return 0;
         }
-        std::vector<int> dp;
+        vector<int> dp;
         dp.reserve(k + 1);
         for (int i = 0; i <= k; ++i) {
             dp[0] = 1;
@@ -60,10 +59,3 @@ public:
         return dp[(distance + k) / 2];
     }
 };
-
-int main(int argc, char *argv[]) {
-    auto *solution = new Solution();
-    std::cout << solution->numberOfWays(1, 2, 3) << std::endl;
-    std::cout << solution->numberOfWays(2, 5, 10) << std::endl;
-    std::cout << solution->numberOfWays(2, 5, 9) << std::endl;
-}

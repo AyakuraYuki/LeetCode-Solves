@@ -50,8 +50,9 @@ public:
     void setZeroes(vector<vector<int> > &matrix) {
         const size_t m = matrix.size();
         const size_t n = matrix[0].size();
-        bool first_col0 = false;
+        bool first_col0 = false; // 用来标记某行的首个数字是 0 的变量，来特殊处理首列归零的逻辑
 
+        // 扫描矩阵标记 0 位
         for (int i = 0; i < m; ++i) {
             if (matrix[i][0] == 0) {
                 first_col0 = true; // 第 i 行首个数字是 0
