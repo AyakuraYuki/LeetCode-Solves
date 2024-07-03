@@ -31,7 +31,7 @@ https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-
     解释：不存在从 2 到 5 且恰好移动 10 步的方法。
 
 提示：
-  * 1 <= startPos, endPos, k <= 1000
+  - 1 <= startPos, endPos, k <= 1000
 
 hint 1: How many steps to the left and to the right do you need to make exactly?
 hint 2: Does the order of the steps matter?

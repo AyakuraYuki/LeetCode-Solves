@@ -14,8 +14,8 @@ https://leetcode.cn/problems/valid-anagram/
     输出: false
 
 提示:
-  * 1 <= s.length, t.length <= 5 * 104
-  * s 和 t 仅包含小写字母
+  - 1 <= s.length, t.length <= 5 * 104
+  - s 和 t 仅包含小写字母
 
 进阶: 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
 */

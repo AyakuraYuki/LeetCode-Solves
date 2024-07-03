@@ -29,7 +29,7 @@ https://leetcode.cn/problems/fibonacci-number/
     解释：F(4) = F(3) + F(2) = 2 + 1 = 3
 
 提示：
-  * 0 <= n <= 30
+  - 0 <= n <= 30
  */
 
 #include <vector>

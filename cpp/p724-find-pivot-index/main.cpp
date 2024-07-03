@@ -29,8 +29,8 @@ https://leetcode.cn/problems/find-pivot-index/
         右侧数之和 sum = nums[1] + nums[2] = 1 + -1 = 0。
 
 提示：
-  * 1 <= nums.length <= 104
-  * -1000 <= nums[i] <= 1000
+  - 1 <= nums.length <= 104
+  - -1000 <= nums[i] <= 1000
 
 注意：本题与主站 1991 题相同：https://leetcode-cn.com/problems/find-the-middle-index-in-array/
 */

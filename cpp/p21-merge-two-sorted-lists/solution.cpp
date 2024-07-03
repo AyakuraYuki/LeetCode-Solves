@@ -21,9 +21,9 @@ https://leetcode.cn/problems/merge-two-sorted-lists/
     输出：[0]
 
 提示：
-  * 两个链表的节点数目范围是 [0, 50]
-  * -100 <= Node.val <= 100
-  * l1 和 l2 均按 非递减顺序 排列
+  - 两个链表的节点数目范围是 [0, 50]
+  - -100 <= Node.val <= 100
+  - l1 和 l2 均按 非递减顺序 排列
  */
 
 #include <algorithm>

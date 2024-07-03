@@ -21,10 +21,10 @@ https://leetcode.cn/problems/search-insert-position/
     输出: 4
 
 提示:
-  * 1 <= nums.length <= 104
-  * -104 <= nums[i] <= 104
-  * nums 为 无重复元素 的 升序 排列数组
-  * -104 <= target <= 104
+  - 1 <= nums.length <= 104
+  - -104 <= nums[i] <= 104
+  - nums 为 无重复元素 的 升序 排列数组
+  - -104 <= target <= 104
  */
 
 #include <vector>

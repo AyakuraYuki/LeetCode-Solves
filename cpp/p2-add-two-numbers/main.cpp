@@ -26,9 +26,9 @@ https://leetcode.cn/problems/add-two-numbers/
     输出：[8,9,9,9,0,0,0,1]
 
 提示：
-  * 每个链表中的节点数在范围 [1, 100] 内
-  * 0 <= Node.val <= 9
-  * 题目数据保证列表表示的数字不含前导零
+  - 每个链表中的节点数在范围 [1, 100] 内
+  - 0 <= Node.val <= 9
+  - 题目数据保证列表表示的数字不含前导零
  */
 
 // Definition for singly-linked list.

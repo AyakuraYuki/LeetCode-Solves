@@ -44,10 +44,10 @@ https://leetcode.cn/problems/sudoku-solver/
     解释：输入的数独如上图所示，唯一有效的解决方案如下所示：
 
 提示：
-  * board.length == 9
-  * board[i].length == 9
-  * board[i][j] 是一位数字或者 '.'
-  * 题目数据 保证 输入数独仅有一个解
+  - board.length == 9
+  - board[i].length == 9
+  - board[i][j] 是一位数字或者 '.'
+  - 题目数据 保证 输入数独仅有一个解
  */
 
 #include <vector>

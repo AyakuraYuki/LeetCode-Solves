@@ -20,9 +20,9 @@ https://leetcode.cn/problems/largest-number-at-least-twice-of-others/
     解释：4 没有超过 3 的两倍大，所以返回 -1 。
 
 提示：
-  * 2 <= nums.length <= 50
-  * 0 <= nums[i] <= 100
-  * nums 中的最大元素是唯一的
+  - 2 <= nums.length <= 50
+  - 0 <= nums[i] <= 100
+  - nums 中的最大元素是唯一的
 
 hint 1: Scan through the array to find the unique largest element `m`,
         keeping track of it's index `maxIndex`. Scan through the array

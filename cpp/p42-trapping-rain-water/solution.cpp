@@ -19,9 +19,9 @@ https://leetcode.cn/problems/trapping-rain-water/
     输出：9
 
 提示：
-  * n == height.length
-  * 1 <= n <= 2 * 104
-  * 0 <= height[i] <= 105
+  - n == height.length
+  - 1 <= n <= 2 * 104
+  - 0 <= height[i] <= 105
 */
 
 #include <vector>

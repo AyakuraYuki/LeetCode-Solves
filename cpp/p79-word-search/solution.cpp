@@ -25,11 +25,11 @@ https://leetcode.com/problems/word-search/description/
     输出：false
 
 提示：
-  * m == board.length
-  * n = board[i].length
-  * 1 <= m, n <= 6
-  * 1 <= word.length <= 15
-  * board 和 word 仅由大小写英文字母组成
+  - m == board.length
+  - n = board[i].length
+  - 1 <= m, n <= 6
+  - 1 <= word.length <= 15
+  - board 和 word 仅由大小写英文字母组成
 
 进阶：你可以使用搜索剪枝的技术来优化解决方案，使其在 board 更大的情况下可以更快解决问题？
 */

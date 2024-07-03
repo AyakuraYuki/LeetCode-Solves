@@ -18,11 +18,11 @@ https://leetcode.cn/problems/diagonal-traverse/
     输出：[1,2,3,4]
 
 提示：
-  * m == mat.length
-  * n == mat[i].length
-  * 1 <= m, n <= 104
-  * 1 <= m * n <= 104
-  * -105 <= mat[i][j] <= 105
+  - m == mat.length
+  - n == mat[i].length
+  - 1 <= m, n <= 104
+  - 1 <= m * n <= 104
+  - -105 <= mat[i][j] <= 105
  */
 
 #include <vector>

@@ -24,8 +24,8 @@ https://leetcode.cn/problems/valid-parentheses/
     输出：false
 
 提示：
-  * 1 <= s.length <= 104
-  * s 仅由括号 '()[]{}' 组成
+  - 1 <= s.length <= 104
+  - s 仅由括号 '()[]{}' 组成
 
 hint 1: Use a stack of characters.
 hint 2: When you encounter an opening bracket, push it to the top of the stack.

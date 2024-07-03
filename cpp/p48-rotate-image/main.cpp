@@ -20,9 +20,9 @@ https://leetcode.cn/problems/rotate-image/
     输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 
 提示：
-  * n == matrix.length == matrix[i].length
-  * 1 <= n <= 20
-  * -1000 <= matrix[i][j] <= 1000
+  - n == matrix.length == matrix[i].length
+  - 1 <= n <= 20
+  - -1000 <= matrix[i][j] <= 1000
  */
 
 #include <vector>

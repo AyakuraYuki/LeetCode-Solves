@@ -33,8 +33,8 @@ https://leetcode.cn/problems/longest-nice-subarray/
     解释：最长的优雅子数组长度为 1 ，任何长度为 1 的子数组都满足题目条件。
 
 提示：
-  * 1 <= nums.length <= 105
-  * 1 <= nums[i] <= 109
+  - 1 <= nums.length <= 105
+  - 1 <= nums[i] <= 109
 
 hint 1: What is the maximum possible length of a nice subarray?
 hint 2: The length of the longest nice subarray cannot exceed 30. Why is that?

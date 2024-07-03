@@ -47,11 +47,11 @@ https://leetcode.cn/problems/meeting-rooms-iii/
         会议室 1 和会议室 2 都举办了 2 场会议，所以返回 1 。
 
 提示：
-  * 1 <= n <= 100
-  * 1 <= meetings.length <= 10^5
-  * meetings[i].length == 2
-  * 0 <= start_i < end_i <= 5 * 10^5
-  * start_i 的所有值 互不相同
+  - 1 <= n <= 100
+  - 1 <= meetings.length <= 10^5
+  - meetings[i].length == 2
+  - 0 <= start_i < end_i <= 5 * 10^5
+  - start_i 的所有值 互不相同
 
 hint 1: Sort meetings based on start times.
 hint 2: Use two min heaps, the first one keeps track of the numbers of all the rooms that are free.

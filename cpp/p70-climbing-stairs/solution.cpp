@@ -25,7 +25,7 @@ https://leetcode.cn/problems/climbing-stairs/
         3. 2 阶 + 1 阶
 
 提示：
-  * 1 <= n <= 45
+  - 1 <= n <= 45
 
 hint 1: To reach nth step, what could have been your previous steps? (Think about the step sizes)
  */
