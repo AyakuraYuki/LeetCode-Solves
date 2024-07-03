@@ -41,8 +41,12 @@ using namespace std;
 class Solution {
 public:
     int pivotIndex(vector<int> &nums) {
+        // 对所有数求和
         int total = 0;
         for (const int num: nums) total += num;
+        // 当 next 是中心，那么 next 的左侧之和等于右侧之和
+        // 又因为中心值不参与左右计算，所以有 total - next = left_sum + right_sum = 2 * part_sum
+        // 用一个 sum 记录中心值左侧数值之和，按公式 2*sum + next = total 来判断 next 是否处于中心
         int sum = 0;
         for (int i = 0; i < nums.size(); ++i) {
             if (sum * 2 + nums[i] == total) {
@@ -53,6 +57,3 @@ public:
         return -1;
     }
 };
-
-int main(int argc, char *argv[]) {
-}
