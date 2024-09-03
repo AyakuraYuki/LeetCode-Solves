@@ -129,7 +129,6 @@ public:
             t += c;
             t += placeholder;
         }
-        t += placeholder;
         s = t;
 
         int start = 0, end = -1, right = -1, j = -1;
