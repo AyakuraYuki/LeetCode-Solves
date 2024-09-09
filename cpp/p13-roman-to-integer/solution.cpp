@@ -90,3 +90,61 @@ private:
         }
     }
 };
+
+class ExtendSolution {
+public:
+    static int roman_to_int(const string &s) {
+        string roman = s;
+        replace_all(roman, "IV", "a");
+        replace_all(roman, "IX", "b");
+        replace_all(roman, "XL", "c");
+        replace_all(roman, "XC", "d");
+        replace_all(roman, "CD", "e");
+        replace_all(roman, "CM", "f");
+
+        int result = 0;
+        for (int i = 0; i < roman.length(); ++i) {
+            result += get_value(roman[i]);
+        }
+        return result;
+    }
+
+private:
+    // 扩展字符：根据特殊规则，定义额外的 a, b, c, d, e, f 字符，用于转换成特殊规则的数值
+    // 为了使用特殊规则，需要替换原字符串中的特殊规则字符
+    static int get_value(const char ch) {
+        switch (ch) {
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            // extend chars
+            case 'a': return 4;
+            case 'b': return 9;
+            case 'c': return 40;
+            case 'd': return 90;
+            case 'e': return 400;
+            case 'f': return 900;
+            default: return 0;
+        }
+    }
+
+    static bool replace(string &s, const string &from, const string &to) {
+        const size_t pos = s.find(from);
+        if (pos == string::npos) return false;
+        s.replace(pos, from.length(), to);
+        return true;
+    }
+
+    static void replace_all(string &s, const string &from, const string &to) {
+        if (from.empty()) return;
+        size_t pos = 0;
+        while ((pos = s.find(from, pos)) != string::npos) {
+            s.replace(pos, from.length(), to);
+            pos += to.length();
+        }
+    }
+};
