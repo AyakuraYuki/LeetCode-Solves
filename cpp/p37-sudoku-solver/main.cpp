@@ -17,7 +17,7 @@ https://leetcode.cn/problems/sudoku-solver/
 数独部分空格内已填入了数字，空白格用 '.' 表示。
 
 示例 1：
-    （图示：puzzle-images/p37-sudoku-solves/input.png）
+    （图片：puzzle-images/p37-sudoku-solves/input.png）
     输入：board = [
         ["5","3",".",".","7",".",".",".","."],
         ["6",".",".","1","9","5",".",".","."],
@@ -29,7 +29,7 @@ https://leetcode.cn/problems/sudoku-solver/
         [".",".",".","4","1","9",".",".","5"],
         [".",".",".",".","8",".",".","7","9"]
     ]
-    （图示：puzzle-images/p37-sudoku-solves/output.png）
+    （图片：puzzle-images/p37-sudoku-solves/output.png）
     输出：[
         ["5","3","4","6","7","8","9","1","2"],
         ["6","7","2","1","9","5","3","4","8"],

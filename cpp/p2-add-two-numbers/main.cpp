@@ -14,7 +14,7 @@ https://leetcode.cn/problems/add-two-numbers/
 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
 示例 1：
-    （图示：puzzle-images/p2-add-two-numbers/addtwonumber1.jpg）
+    （图片：puzzle-images/p2-add-two-numbers/addtwonumber1.jpg）
     输入：l1 = [2,4,3], l2 = [5,6,4]
     输出：[7,0,8]
     解释：342 + 465 = 807.
