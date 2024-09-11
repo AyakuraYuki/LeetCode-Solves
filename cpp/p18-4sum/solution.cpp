@@ -32,7 +32,6 @@ https://leetcode.cn/problems/4sum/
 #include <algorithm>
 #include <vector>
 using namespace std;
-using LL = long long;
 
 class Solution {
 public:
@@ -40,18 +39,22 @@ public:
         if (nums.size() < 4) return {};
 
         vector<vector<int> > ans;
-        const int n = static_cast<int>(nums.size());
+        const size_t n = nums.size();
         ranges::sort(nums);
 
-        for (int i = 0; i < n; i++) {
+        long long sum = 0;
+        size_t l = 0, r = 0;
+
+        for (size_t i = 0; i < n; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) continue; // 与前一个数相同，跳过
 
-            for (int j = i + 1; j < n; ++j) {
+            for (size_t j = i + 1; j < n; ++j) {
                 if (j > i + 1 && nums[j] == nums[j - 1]) continue; // 与前一个数相同，跳过
 
-                int l = j + 1, r = n - 1;
+                l = j + 1, r = n - 1;
                 while (l < r) {
-                    if (const LL sum = static_cast<LL>(nums[i]) + nums[j] + nums[l] + nums[r]; sum == target) {
+                    sum = static_cast<long long>(nums[i]) + nums[j] + nums[l] + nums[r];
+                    if (sum == target) {
                         ans.push_back({nums[i], nums[j], nums[l], nums[r]});
                         while (l < r && nums[l] == nums[l + 1]) ++l; // 跳过重复
                         while (l < r && nums[r] == nums[r - 1]) --r; // 跳过重复
