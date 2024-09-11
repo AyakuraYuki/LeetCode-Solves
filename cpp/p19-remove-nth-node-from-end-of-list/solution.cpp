@@ -56,7 +56,7 @@ public:
     // 首先演示一个常规解，这个解法需要两次遍历，所以不是非常高效，但却是最容易想到的解法
     static ListNode *removeNthFromEnd(ListNode *head, const int n) {
         auto *dummy = new ListNode(0, head);
-        // 获取全链长度
+        // 获取全链长度（这里是第一次扫描）
         int len = 0;
         while (head) {
             ++len;
@@ -65,6 +65,7 @@ public:
         // 重新回到头部，做摘取节点的操作
         ListNode *cur = dummy;
         // 这里的第 len - n + 1 个节点就是需要删除的节点，i 初始化为 1 是因为 cur 取自哑节点 dummy，dummy 是 0 号节点
+        // 这里是第二次扫描
         for (int i = 1; i < len - n + 1; ++i)
             cur = cur->next;
         // 把倒数第 n 个节点跳过
@@ -79,7 +80,7 @@ public:
 class StackSolution {
 public:
     static ListNode *removeNthFromEnd(ListNode *head, const int n) {
-        ListNode *dummy = new ListNode(0, head);
+        auto *dummy = new ListNode(0, head);
         stack<ListNode *> stk;
         ListNode *cur = dummy;
         while (cur) {
@@ -112,4 +113,47 @@ private:
         if (cursor == n) prev->next = cur->next; // 找到目标节点，移除。注意，此时的 prev 是上一个栈的 cur。
         return cursor + 1;
     }
+};
+
+// 基于双指针的实现
+class DoublePointerSolution {
+public:
+    static ListNode *removeNthFromEnd(ListNode *head, const int n) {
+        auto *dummy = new ListNode(0, head);
+        auto *front = head;
+        auto *back = dummy;
+        for (int i = 0; i < n; ++i) {
+            front = front->next; // 提前移动
+        }
+        // 同时移动
+        while (front) {
+            front = front->next;
+            back = back->next;
+        }
+        back->next = back->next->next;
+        ListNode *ans = dummy->next;
+        delete dummy;
+        return ans;
+    }
+};
+
+// 一种【取巧】的解决方案：偷偷加一个索引成员，结合方法栈解决
+class IndexInRecursiveSolution {
+public:
+    ListNode *removeNthFromEnd(ListNode *head, const int n) {
+        if (head == nullptr)
+            return head;
+
+        head->next = removeNthFromEnd(head->next, n);
+        ++index;
+        if (index == n) {
+            auto *ans = head->next;
+            delete head;
+            return ans;
+        }
+        return head;
+    }
+
+private:
+    int index = 0;
 };
