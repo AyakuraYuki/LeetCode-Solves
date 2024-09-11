@@ -82,8 +82,6 @@ public:
         const size_t n = nums.size();
         ranges::sort(nums);
 
-        size_t l = 0, r = 0;
-
         for (size_t i = 0; i < n - 3; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) continue; // 与前一个数相同，跳过
 
@@ -104,7 +102,7 @@ public:
                     continue; // 确定第二个数，再与第一个数和数组末尾两个数求和，小于 target，则跳过当前 j 的数值，进入下一个循环
                 }
 
-                l = j + 1, r = n - 1;
+                size_t l = j + 1, r = n - 1;
                 while (l < r) {
                     if (const long sum = static_cast<long>(nums[i]) + nums[j] + nums[l] + nums[r]; sum == target) {
                         ans.push_back({nums[i], nums[j], nums[l], nums[r]});
