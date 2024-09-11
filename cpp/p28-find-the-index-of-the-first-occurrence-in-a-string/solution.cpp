@@ -68,8 +68,7 @@ public:
                 left = pi[left - 1]; // 匹配不成功，回退 left，直到 left 归零
             }
             if (needle[left] == needle[right]) {
-                // 匹配成功，找到了相同的前后缀，先让 left +1，此时的 left 是前缀长度
-                ++left;
+                ++left; // 匹配成功，找到了相同的前后缀，先让 left +1，此时的 left 是前缀长度
             }
             pi[right] = left; // 记录前缀长度，更新到 pi[right]
         }
