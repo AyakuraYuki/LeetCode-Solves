@@ -35,6 +35,7 @@ public:
     // 滑动窗口：因为本题需要找出第一个匹配的下标，所以可以遍历 haystack，利用滑动窗口来找到第一个匹配的子串
     // 滑动窗口的大小取决于 needle 的长度，如果某一窗口的开头和结尾匹配了 needle 的开头和结尾，再去检查这个窗口是否完全匹配 needle
     // 匹配的过程中为了避免拷贝，尽可能的使用引用和视图。
+    // （自己解的）
     static int strStr(const string &haystack, const string &needle) {
         const unsigned int needle_size = needle.size(), haystack_size = haystack.size();
         const char &needle_start = needle[0], &needle_end = needle[needle_size - 1];
