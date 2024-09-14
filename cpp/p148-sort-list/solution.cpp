@@ -64,7 +64,7 @@ public:
 private:
     ListNode *merge(ListNode *left, ListNode *right) {
         // 建立一个哑节点存储检查点
-        auto *dummy = new ListNode(-1);
+        auto *dummy = new ListNode(0);
         // 建立一个游标以进行扫描
         auto *cursor = dummy;
         while (left && right) {
