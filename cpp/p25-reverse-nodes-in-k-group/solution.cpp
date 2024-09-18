@@ -52,7 +52,7 @@ struct ListNode {
 // （自己解的）
 class Solution {
 public:
-    static ListNode *reverseKGroup(ListNode *head, int k) {
+    static ListNode *reverseKGroup(ListNode *head, const int k) {
         auto *cursor = head;
         auto *dummy = new ListNode(0);
         auto *dummy_cursor = dummy;
@@ -84,8 +84,62 @@ public:
     }
 };
 
+class TheAnswerSolution {
+public:
+    // 翻转一个子链表，并且返回新的头尾
+    pair<ListNode *, ListNode *> my_reverse(ListNode *head, ListNode *tail) {
+        auto *prev = tail->next;
+        auto *p = head;
+        while (prev != tail) {
+            auto *next = p->next;
+            p->next = prev;
+            prev = p;
+            p = next;
+        }
+        return {tail, head};
+    }
+
+    ListNode *reverseKGroup(ListNode *head, int k) {
+        auto *dummy = new ListNode(0);
+        dummy->next = head;
+        auto *cursor = dummy;
+
+        while (head) {
+            auto *tail = cursor;
+
+            // 查看剩余部分长度是否大于等于 k
+            for (int i = 0; i < k; ++i) {
+                tail = tail->next;
+                if (!tail)
+                    return dummy->next;
+            }
+
+            auto *next = tail->next;
+
+            // 这里是 C++17 的写法，等价于：
+            // pair<ListNode *, ListNode *> result = my_reverse(head, tail);
+            // head = result.first;
+            // tail = result.second;
+            tie(head, tail) = my_reverse(head, tail);
+
+            // 把子链表重新接回原链表
+            cursor->next = head;
+            tail->next = next;
+            cursor = tail;
+            head = tail->next;
+        }
+
+        return dummy->next;
+    }
+};
+
 int main(int argc, char *argv[]) {
     Solution::reverseKGroup(
+        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
+        3
+    );
+
+    (new TheAnswerSolution())->reverseKGroup(
         new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
         3
     );
