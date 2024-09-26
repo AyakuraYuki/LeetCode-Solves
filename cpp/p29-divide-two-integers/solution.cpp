@@ -34,7 +34,8 @@ public:
         if (dividend == 0) return 0;
         if (divisor == 1) return dividend;
         // 除数是 -1，被除数如果不是最小 int 就返回它的相反数；否则直接返回最大整数。这里的「否则」即被除数是 INT_MIN 已经是最小 int 了。
-        if (divisor == -1) return dividend > INT_MIN ? -dividend : INT_MAX;
+        if (divisor == -1)
+            return dividend > INT_MIN ? -dividend : INT_MAX;
 
         int a = dividend;
         int b = divisor;
