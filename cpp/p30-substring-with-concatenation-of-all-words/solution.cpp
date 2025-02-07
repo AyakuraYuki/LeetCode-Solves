@@ -50,7 +50,7 @@ s 中的“串联子串”是指一个包含 words 中所有字符串以任意�
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <__ranges/views.h>
+#include <ranges>
 using namespace std;
 
 class Solution {
@@ -101,14 +101,38 @@ public:
 
 // Boyer-Moore 算法
 class BoyerMooreSolution {
+public:
     vector<int> findSubstring(const string &s, const vector<string> &words) {
         const int n = s.size(), m = words.size(), w = words[0].size();
         vector<int> ans; // 结果集
+
         unordered_map<string, int> dict, cmp; // dict: 单词所需出现次数; cmp: 找到记录
         for (const auto &word: words) dict[word]++;
-        if (dict.size()==1) { // Boyer-Moore 算法在字典大小是 1 时退化，特殊处理
-            string target = std::views::join(words)
+
+        if (dict.size() == 1) {
+            // Boyer-Moore 算法在字典大小是 1 时退化，特殊处理
+            const string target = views::join(words) | ranges::to<string>();
+            for (int pos = 0; (pos = s.find(target, pos)) != string::npos; pos++) ans.push_back(pos);
+            return ans;
         }
+
+        for (int start: views::iota(0, w)) {
+            for (int i = start, j; i <= n - w * m; i += w) {
+                for (j = i + w * (m - 1); j >= i; j -= w) {
+                    // 这里的 j -= w 倒序匹配决定了亚线性的复杂度
+                    string str = s.substr(j, w);
+                    if (!dict.count(str) || dict[str] == cmp[str]) break;
+                    cmp[str]++;
+                    if (j == i) {
+                        ans.push_back(j);
+                        break;
+                    }
+                }
+                i = j;
+                cmp.clear();
+            }
+        }
+
         return ans;
     }
 };
