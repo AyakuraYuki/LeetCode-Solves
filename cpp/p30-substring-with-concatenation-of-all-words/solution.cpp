@@ -100,6 +100,7 @@ public:
 };
 
 // Boyer-Moore 算法
+// 参考：https://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html
 class BoyerMooreSolution {
 public:
     vector<int> findSubstring(const string &s, const vector<string> &words) {
