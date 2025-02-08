@@ -105,6 +105,7 @@ class BoyerMooreSolution {
 public:
     vector<int> findSubstring(const string &s, const vector<string> &words) {
         const int n = s.size(), m = words.size(), w = words[0].size();
+        const int mwl = n - w * m; // move window limitation
         vector<int> ans; // 结果集
 
         unordered_map<string, int> dict, cmp; // dict: 单词所需出现次数; cmp: 找到记录
@@ -117,8 +118,8 @@ public:
             return ans;
         }
 
-        for (int start: views::iota(0, w)) {
-            for (int i = start, j; i <= n - w * m; i += w) {
+        for (const int start: views::iota(0, w)) {
+            for (int i = start, j; i <= mwl; i += w) {
                 for (j = i + w * (m - 1); j >= i; j -= w) {
                     // 这里的 j -= w 倒序匹配决定了亚线性的复杂度
                     string str = s.substr(j, w);
