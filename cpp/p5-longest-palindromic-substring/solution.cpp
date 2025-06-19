@@ -159,6 +159,6 @@ public:
     }
 };
 
-int main(int argc, char *argv[]) {
+int main(char* argv[]) {
     cout << Solution::longest_palindrome_eac("cbbd") << endl;
 }

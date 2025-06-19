@@ -57,6 +57,6 @@ public:
     }
 };
 
-int main(int argc, char *argv[]) {
+int main(char* argv[]) {
     cout << (new Solution())->lengthOfLongestSubstring("abcabcbb") << endl;
 }

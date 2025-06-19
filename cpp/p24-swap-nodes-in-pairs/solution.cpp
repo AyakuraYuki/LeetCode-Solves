@@ -79,6 +79,6 @@ public:
     }
 };
 
-int main(int argc, char *argv[]) {
+int main(char* argv[]) {
     RecursiveSolution::swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
 }

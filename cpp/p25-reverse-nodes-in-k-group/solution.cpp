@@ -133,7 +133,7 @@ public:
     }
 };
 
-int main(int argc, char *argv[]) {
+int main(char* argv[]) {
     Solution::reverseKGroup(
         new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
         3
