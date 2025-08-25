@@ -10,7 +10,7 @@ type Point struct {
 	x, y int
 }
 
-func BFS(R, C int, labyrinth [][]rune) int {
+func BFS(R, C int, labyrinth [50][50]rune) int {
 	var (
 		distance [50][50]int
 		visited  [50][50]bool
