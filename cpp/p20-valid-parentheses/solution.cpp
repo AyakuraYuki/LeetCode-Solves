@@ -79,8 +79,8 @@ public:
     }
 };
 
-// 用 map 声明括号组来匹配
-class MapSolution {
+// 利用栈的解决方案
+class StackSolution {
 public:
     static bool isValid(const string &s) {
         if (s.size() % 2 != 0) return false; // 有效的括号不能是奇数长度
@@ -91,6 +91,7 @@ public:
             {'}', '{'}
         };
         stack<char> left_stack;
+
         for (char ch: s) {
             if (pairs.contains(ch)) {
                 // 右括号，去匹配栈顶元素
